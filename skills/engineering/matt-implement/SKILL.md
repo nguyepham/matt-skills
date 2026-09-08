@@ -6,10 +6,10 @@ disable-model-invocation: true
 
 Implement work described in spec or tickets.
 
-Use `/tdd` where possible at pre-agreed seams.
+Use `/matt-tdd` where possible at pre-agreed seams.
 
 Run typechecking + single test files regularly. Run full test suite at end.
 
-Done => run `/code-review`.
+Done => run `/matt-code-review`.
 
 Commit work to current branch.

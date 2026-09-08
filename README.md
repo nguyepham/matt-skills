@@ -4,7 +4,7 @@ Agent skills for engineering.
 
 GSD, BMAD & Spec-Kit own process + remove control => hard bugs. These skills: small, composable, model-agnostic. Modify them.
 
-### 1. Run `/setup-matt-pocock-skills`
+### 1. Run `/matt-skill-setup`
 
 Run once per repo. Configures:
 - Issue tracker (GitHub, Linear, local)
@@ -22,7 +22,7 @@ Fixes common agent failure modes.
 Agent misunderstands goal. Solution: rigorous questions.
 
 Use:
-- [`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md): adds domain documentation
+- [`/matt-grill-with-docs`](./skills/engineering/matt-grill-with-docs/SKILL.md): adds domain documentation
 
 Aligns agent + user before coding. Use for every change.
 
@@ -38,21 +38,21 @@ From [`CONTEXT.md`](https://github.com/mattpocock/course-video-manager/blob/076a
 - **After**: "There's a problem with the materialization cascade"
 </details>
 
-[`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md) builds shared language. Updates `CONTEXT.md` & ADRs.
+[`/matt-grill-with-docs`](./skills/engineering/matt-grill-with-docs/SKILL.md) builds shared language. Updates `CONTEXT.md` & ADRs.
 Consistent names => easier navigation + lower token cost.
 
 ### #3: Broken Code
 
 Agent lacks feedback => bad code. Solution: static types, browser access, automated tests.
 
-- **[`/tdd`](./skills/engineering/matt-tdd/SKILL.md)**: red-green-refactor loop. Write failing test => fix test.
+- **[`/matt-tdd`](./skills/engineering/matt-tdd/SKILL.md)**: red-green-refactor loop. Write failing test => fix test.
 
 ### #4: Architecture Rot
 
 Agents accelerate codebase complexity. Solution: active design.
 
-- [`/to-spec`](./skills/engineering/to-spec/SKILL.md): queries touched modules before creating spec.
-- [`/improve-codebase-architecture`](./skills/engineering/improve-codebase-architecture/SKILL.md): surveys codebase for deepening opportunities. Run frequently.
+- [`/matt-to-spec`](./skills/engineering/matt-to-spec/SKILL.md): queries touched modules before creating spec.
+- [`/matt-improve-codebase-architecture`](./skills/engineering/matt-improve-codebase-architecture/SKILL.md): surveys codebase for deepening opportunities. Run frequently.
 
 ## Reference
 
@@ -65,31 +65,32 @@ User-invoked skill cannot invoke another user-invoked skill.
 Daily code work.
 
 **User-invoked**
-- **[ask-matt](./skills/engineering/ask-matt/SKILL.md)**: skill router.
-- **[grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md)**: grilling session + domain model builder (`CONTEXT.md`, ADRs).
+- **[matt-ask](./skills/engineering/matt-ask/SKILL.md)**: skill router.
+- **[matt-grill-with-docs](./skills/engineering/matt-grill-with-docs/SKILL.md)**: matt-grilling session + domain model builder (`CONTEXT.md`, ADRs).
 - **[triage](./skills/engineering/triage/SKILL.md)**: issue triage state machine.
-- **[improve-codebase-architecture](./skills/engineering/improve-codebase-architecture/SKILL.md)**: architecture scan HTML report + grilling.
-- **[setup-matt-pocock-skills](./skills/engineering/setup-matt-pocock-skills/SKILL.md)**: repo configuration.
-- **[to-spec](./skills/engineering/to-spec/SKILL.md)**: conversation => tracker spec.
-- **[to-tickets](./skills/engineering/to-tickets/SKILL.md)**: spec => blocking tracer-bullet tickets.
-- **[implement](./skills/engineering/matt-implement/SKILL.md)**: build spec via `/tdd` + `/code-review`.
-- **[wayfinder](./skills/engineering/wayfinder/SKILL.md)**: large work planning via tracker tickets.
+- **[matt-improve-codebase-architecture](./skills/engineering/matt-improve-codebase-architecture/SKILL.md)**: architecture scan HTML report + matt-grilling.
+- **[matt-skill-setup](./skills/engineering/matt-skill-setup/SKILL.md)**: repo configuration.
+- **[matt-to-spec](./skills/engineering/matt-to-spec/SKILL.md)**: conversation => tracker spec.
+- **[matt-to-tickets](./skills/engineering/matt-to-tickets/SKILL.md)**: spec => blocking tracer-bullet tickets.
+- **[matt-implement](./skills/engineering/matt-implement/SKILL.md)**: build spec via `/matt-tdd` + `/matt-code-review`.
+- **[matt-wayfinder](./skills/engineering/matt-wayfinder/SKILL.md)**: large work planning via tracker tickets.
 
 **Model-invoked**
-- **[prototype](./skills/engineering/prototype/SKILL.md)**: throwaway HTML prototypes.
-- **[tdd](./skills/engineering/matt-tdd/SKILL.md)**: red-green-refactor loop.
-- **[domain-modeling](./skills/engineering/domain-modeling/SKILL.md)**: refine `CONTEXT.md` terminology.
-- **[codebase-design](./skills/engineering/codebase-design/SKILL.md)**: deep module design.
-- **[code-review](./skills/engineering/code-review/SKILL.md)**: standards & spec review.
+- **[matt-prototype](./skills/engineering/matt-prototype/SKILL.md)**: throwaway HTML prototypes.
+- **[matt-tdd](./skills/engineering/matt-tdd/SKILL.md)**: red-green-refactor loop.
+- **[matt-domain-modeling](./skills/engineering/matt-domain-modeling/SKILL.md)**: refine `CONTEXT.md` terminology.
+- **[matt-codebase-design](./skills/engineering/matt-codebase-design/SKILL.md)**: deep module design.
+- **[matt-code-review](./skills/engineering/matt-code-review/SKILL.md)**: standards & spec review.
 
 ### Productivity
 
 General workflow tools.
 
 **User-invoked**
-- **[handoff](./skills/productivity/handoff/SKILL.md)**: conversation => handoff doc.
-- **[to-questionnaire](./skills/productivity/to-questionnaire/SKILL.md)**: decision => markdown questionnaire.
-- **[wait-what](./skills/productivity/wait-what/SKILL.md)**: re-pitch missing context.
+- **[matt-handoff](./skills/productivity/matt-handoff/SKILL.md)**: conversation => matt-handoff doc.
+- **[matt-grill-me](./skills/productivity/matt-grill-me/SKILL.md)**: grilling conversation.
+- **[matt-to-questionnaire](./skills/productivity/matt-to-questionnaire/SKILL.md)**: decision => markdown questionnaire.
+- **[matt-wait-what](./skills/productivity/matt-wait-what/SKILL.md)**: re-pitch missing context.
 
 **Model-invoked**
-- **[grilling](./skills/productivity/grilling/SKILL.md)**: base interview primitive.
+- **[matt-grilling](./skills/productivity/matt-grilling/SKILL.md)**: base interview primitive.

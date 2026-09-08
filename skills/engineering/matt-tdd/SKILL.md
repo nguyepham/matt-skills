@@ -23,7 +23,7 @@ Confirm seams with user before writing tests. Focus effort on critical paths + c
 
 Ask: "What is the public interface? Which seams should we test?"
 
-Unclear interface shape => call `codebase-design` skill for vocabulary (module, interface, depth, seam).
+Unclear interface shape => call `matt-codebase-design` skill for vocabulary (module, interface, depth, seam).
 
 ## Anti-patterns
 
@@ -35,4 +35,4 @@ Unclear interface shape => call `codebase-design` skill for vocabulary (module, 
 
 - **Red before green.** Write failing test. Write minimal passing code. Skip speculative features.
 - **One slice at a time.** One seam + one test + one minimal implementation per cycle.
-- **Refactoring = separate stage.** Use `code-review` skill. Exclude from red → green cycle.
+- **Refactoring = separate stage.** Use `matt-code-review` skill. Exclude from red → green cycle.

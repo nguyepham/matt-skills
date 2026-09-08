@@ -19,7 +19,7 @@ Router prose (`ask-matt`, bucket `README.md`s) keeps plain `/skill` labels.
 
 Skill tool takes 1 skill per call. 2 skills => 2 tool calls.
 
-Skill tool calls only model-invoked skills. User-invoked skill precondition => instruct human ("tell the user to run `/setup-matt-pocock-skills`").
+Skill tool calls only model-invoked skills. User-invoked skill precondition => instruct human ("tell the user to run `/matt-skill-setup`").
 
 ## Passive vs active domain work
 

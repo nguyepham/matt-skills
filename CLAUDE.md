@@ -2,22 +2,31 @@
 
 This file provides guidance to Tau when working with code in this repository.
 
-## Overview
-This repository contains a collection of composable, model-agnostic agent skills for engineering tasks (like TDD, code review, documentation generation, and domain modeling).
+## Commands
+
+This repository hosts agent skills (Markdown/YAML), so it does not have traditional build or test steps. Instead, skills are linked to your local instance during development.
+
+- **Install/Link Skills locally**: `./scripts/link-skills.sh`
+  Creates symlinks from `~/.claude/skills/` to the directories in `skills/`.
+- **Uninstall/Unlink Skills**: `./scripts/unlink-skills.sh`
+  Removes the symlinks from `~/.claude/skills/`.
 
 ## Architecture & Structure
-- **`skills/`**: Contains the various agent skills.
-  - **`skills/engineering/`**: Engineering-specific skills.
-    - **User-invoked skills**: Orchestration tools manually triggered by the user (e.g., `ask-matt`, `grill-with-docs`, `triage`, `improve-codebase-architecture`, `setup-matt-pocock-skills`, `to-spec`, `to-tickets`, `implement`, `wayfinder`). User-invoked skills cannot invoke other user-invoked skills.
-    - **Model-invoked skills**: Reusable primitives automatically triggered or typed manually (e.g., `prototype`, `tdd`, `domain-modeling`, `codebase-design`, `code-review`).
-  - **`skills/productivity/`**: General workflow tools (e.g., `handoff`, `to-questionnaire`, `wait-what`, `grilling`).
-- **`.agents/`**: Contains ADRs and documentation about the agents.
-- **`CONTEXT.md`**: Contains shared domain language and terminology. Keep this updated to ensure consistent naming and understanding across the codebase.
 
-## Workflow & Guidelines
-- **Setup**: Run `/setup-matt-pocock-skills` once per repository to configure issue tracking, triage labels, and docs location.
-- **Alignment**: Use `/grill-with-docs` before starting work to build shared language and ensure alignment between the agent and the user.
-- **Development**:
-  - Prefer the red-green-refactor loop using `/tdd`. Write failing tests before fixing code.
-  - Active design is encouraged. Run `/improve-codebase-architecture` frequently and use `/to-spec` before implementing large changes.
-- **Terminology**: Always use the domain jargon established in `CONTEXT.md` to maintain consistency and reduce token costs.
+This repository provides reusable, model-agnostic skills (slash commands and behaviors) for Tau/Claude Code. It is designed to fix common agent failure modes like misalignment, verbosity, and broken code by enforcing shared language and feedback loops.
+
+### Directory Structure
+
+- **`skills/`**: The core implementations.
+  - **`skills/engineering/`**: Skills for daily code work (e.g., `matt-tdd`, `matt-code-review`, `matt-to-spec`).
+  - **`skills/productivity/`**: Skills for general workflows (e.g., `matt-handoff`, `matt-grilling`).
+  - Every skill is encapsulated in its own directory containing a **`SKILL.md`** file, which is the entry point defining the skill's trigger and prompt instructions.
+  - Specialized sub-agents (if any) are defined in an `agents/` subdirectory (e.g., `agents/openai.yaml`).
+- **`docs/`**: Markdown documentation explaining the usage and inner workings of each skill.
+- **`CONTEXT.md`**: Defines the shared domain language (e.g., "Issue tracker", "Triage role"). Updates to project vocabulary should go here.
+
+### Skill Design Principles
+
+- **User-invoked vs Model-invoked**: User-invoked skills (like `/matt-ask`) act as orchestrators and are triggered manually. Model-invoked skills (like `matt-tdd`) are reusable primitives triggered automatically or manually. A user-invoked skill cannot invoke another user-invoked skill.
+- **Alignment & Shared Language**: Skills like `matt-grill-with-docs` explicitly build a shared domain understanding (`CONTEXT.md` and ADRs) before coding begins to prevent misalignment and verbosity.
+- **Feedback Loops**: Skills rely heavily on tools and static validation (e.g., `matt-tdd` using red-green-refactor loops) rather than blind generation to avoid architectural rot.
