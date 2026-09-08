@@ -52,7 +52,7 @@ When matt-grilling, ask one question at a time.
 The round-based default is genuinely contested. Practitioners who read slowly, who work in a second language, or who use the sequential format as focus scaffolding all report the one-at-a-time rhythm is better for them, and the opt-out is supported rather than tolerated.
 
 **Where did `/batch-matt-grill-me` go?**
-Into this skill. Round-based questioning shipped briefly as a separate skill, then moved into `matt-grilling` itself, so everything built on the primitive (`matt-grill-me`, `matt-grill-with-docs`, `triage`, `matt-wayfinder`) got it at once. There is no `batch-matt-grill-me` to install, and no separate sequential skill either; the `CLAUDE.md` line above is the way back to one-at-a-time.
+Into this skill. Round-based questioning shipped briefly as a separate skill, then moved into `matt-grilling` itself, so everything built on the primitive (`matt-grill-me`, `matt-grill-with-docs`, `matt-triage`, `matt-wayfinder`) got it at once. There is no `batch-matt-grill-me` to install, and no separate sequential skill either; the `CLAUDE.md` line above is the way back to one-at-a-time.
 
 **Asking a whole round at once must lose the questions my earlier answers would have raised. Doesn't it?**
 This is the most common objection to the round design, and the frontier is the answer to it: a round only ever contains questions that do not depend on each other, so no answer in a round can invalidate another question in that round. Answers still reshape everything downstream: the next round is recomputed, not pre-written. What you lose is smaller than "all questions at once" implies, and larger than nothing: see the frontier's limit above.

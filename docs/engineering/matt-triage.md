@@ -1,8 +1,8 @@
 ## What it does
 
-`triage` works through the issues on your project's tracker, moving each one through a small state machine of **triage roles** (a category role and a state role) and leaving behind either an agent-ready brief, a specific question for the reporter, or a closed issue with a recorded reason.
+`matt-triage` works through the issues on your project's tracker, moving each one through a small state machine of **triage roles** (a category role and a state role) and leaving behind either an agent-ready brief, a specific question for the reporter, or a closed issue with a recorded reason.
 
-It is only for issues **you didn't create**. Raw bug reports, incoming feature requests, an external pull request that arrived unannounced: work that landed in the tracker from outside, in whatever shape the reporter left it. [Tickets](https://www.aihero.dev/ai-coding-dictionary/ticket) that [matt-to-tickets](../../skills/engineering/matt-to-tickets/SKILL.md) produced are already agent-ready by construction, and running `triage` over them is wasted work at best. The rule is flat: `/triage` is only for incoming issues, not for issues you created yourself.
+It is only for issues **you didn't create**. Raw bug reports, incoming feature requests, an external pull request that arrived unannounced: work that landed in the tracker from outside, in whatever shape the reporter left it. [Tickets](https://www.aihero.dev/ai-coding-dictionary/ticket) that [matt-to-tickets](../../skills/engineering/matt-to-tickets/SKILL.md) produced are already agent-ready by construction, and running `matt-triage` over them is wasted work at best. The rule is flat: `/triage` is only for incoming issues, not for issues you created yourself.
 
 The second thing that separates it from labelling by hand: it recommends and waits. It tells you its category and state call with reasoning, plus what it found in the codebase, and applies nothing until you direct it.
 
@@ -20,7 +20,7 @@ You invoke this by typing `/triage` and then describing what you want in plain l
 
 ## Prerequisites
 
-`triage` reads and writes your issue tracker, so [matt-skill-setup](../../skills/engineering/matt-skill-setup/SKILL.md) has to have configured that tracker and its label vocabulary first. The role names below are **canonical**; the label strings in your tracker may differ, and the mapping is what setup provides. If your tracker already uses the canonical names exactly, there is nothing to map and nothing to set up.
+`matt-triage` reads and writes your issue tracker, so [matt-skill-setup](../../skills/engineering/matt-skill-setup/SKILL.md) has to have configured that tracker and its label vocabulary first. The role names below are **canonical**; the label strings in your tracker may differ, and the mapping is what setup provides. If your tracker already uses the canonical names exactly, there is nothing to map and nothing to set up.
 
 The tracker config also decides whether external pull requests count as a request surface, and who counts as external. That flag defaults to off and is no longer a setup question, so flip it in `docs/agents/issue-tracker.md` if you want PRs in scope.
 
@@ -46,11 +46,11 @@ That is the whole vocabulary, and the "exactly one state role" invariant is what
 | Rejected bug | Polite explanation, then close. |
 | Rejected enhancement | A file in `.out-of-scope/`, linked from the closing comment, then close. |
 
-`.out-of-scope/` is one markdown file per rejected **concept**, not per issue, written as a short design document rather than a database row: what was rejected, why, and every issue that has asked for it. `triage` reads the whole directory before it evaluates anything, and matches by concept rather than keyword, so "night theme" matches `dark-mode.md`. When it hits a match it surfaces the old decision and asks whether you still feel the same way, instead of re-litigating the request from scratch.
+`.out-of-scope/` is one markdown file per rejected **concept**, not per issue, written as a short design document rather than a database row: what was rejected, why, and every issue that has asked for it. `matt-triage` reads the whole directory before it evaluates anything, and matches by concept rather than keyword, so "night theme" matches `dark-mode.md`. When it hits a match it surfaces the old decision and asks whether you still feel the same way, instead of re-litigating the request from scratch.
 
 ## Verify before you brief
 
-Before any [matt-grilling](https://www.aihero.dev/ai-coding-dictionary/matt-grilling), `triage` checks that the claim actually holds. For a bug, it reproduces it from the reporter's steps. For a PR, it checks the branch out and runs the relevant tests. Then it reports which of three things happened: confirmed, with the code path; failed to reproduce; or not enough detail to try, which is itself the strongest `needs-info` signal there is.
+Before any [matt-grilling](https://www.aihero.dev/ai-coding-dictionary/matt-grilling), `matt-triage` checks that the claim actually holds. For a bug, it reproduces it from the reporter's steps. For a PR, it checks the branch out and runs the relevant tests. Then it reports which of three things happened: confirmed, with the code path; failed to reproduce; or not enough detail to try, which is itself the strongest `needs-info` signal there is.
 
 It runs two more checks against the codebase in the same pass: **redundancy** (is this already implemented, searched by domain concept rather than by the reporter's wording?) and **prior rejection** (does `.out-of-scope/` already say no?). Both are cheap, and both produce a `wontfix` when they hit.
 
@@ -65,10 +65,10 @@ Discovery surfaces only *external* PRs, because a collaborator's in-flight branc
 ## Common questions
 
 **I ran `/matt-to-spec` and `/matt-to-tickets`, and now those tickets are sitting there untriaged. Do I run `/triage` over them?**
-No. They are already agent-ready, because `matt-to-tickets` applies the `ready-for-agent` label as it publishes, precisely so an AFK runner picks them up without another pass. The user who hit this had run the spec flow, seen `needs-triage` on the output, and found their AFK runner ignoring everything. `triage` is the on-ramp for work that arrives from outside; the spec flow is the lane for work you originate. They meet at `ready-for-agent`, not before.
+No. They are already agent-ready, because `matt-to-tickets` applies the `ready-for-agent` label as it publishes, precisely so an AFK runner picks them up without another pass. The user who hit this had run the spec flow, seen `needs-triage` on the output, and found their AFK runner ignoring everything. `matt-triage` is the on-ramp for work that arrives from outside; the spec flow is the lane for work you originate. They meet at `ready-for-agent`, not before.
 
-**Is `triage` still relevant now that there's a `matt-to-spec` → `matt-to-tickets` → `implement` flow?**
-Only if you have inbound work. `triage` predates that spine and does a different job: it is the lane for reports other people filed. If everything in your tracker came out of your own planning, you will rarely open it. If you maintain anything public, or your team files bugs at you, it is the front door. The main use is open-source repos taking issues from external contributors.
+**Is `matt-triage` still relevant now that there's a `matt-to-spec` → `matt-to-tickets` → `matt-implement` flow?**
+Only if you have inbound work. `matt-triage` predates that spine and does a different job: it is the lane for reports other people filed. If everything in your tracker came out of your own planning, you will rarely open it. If you maintain anything public, or your team files bugs at you, it is the front door. The main use is open-source repos taking issues from external contributors.
 
 **The agent tried to apply `ready-for-agent` and `gh` said the label doesn't exist.**
 Known open bug ([#616](https://github.com/mattpocock/skills/issues/616)). `matt-skill-setup` writes the label vocabulary into `docs/agents/triage-labels.md`, but does not create the labels in your tracker. Create the five state labels and two category labels yourself, once, with `gh label create` or the tracker's UI, and it stops. There is a community fix branch linked from the issue that hasn't been merged.
@@ -96,4 +96,4 @@ Yes, the tracker is config, not a hard-coded assumption, and people run it again
 
 ## Where it fits
 
-`triage` is an **on-ramp**, not a step in the main chain. The main flow runs from an idea you had (grill, spec, tickets, implement, review), and `triage` is the parallel lane for work that arrived instead. It merges at the same place: an issue labelled `ready-for-agent` with a brief on it, which [implement](../../skills/engineering/matt-implement/SKILL.md) picks up exactly as it would a ticket from [matt-to-tickets](../../skills/engineering/matt-to-tickets/SKILL.md). When a request needs sharpening before it can be briefed, `triage` runs [matt-grilling](../../skills/productivity/matt-grilling/SKILL.md) and [matt-domain-modeling](../../skills/engineering/matt-domain-modeling/SKILL.md) together, a round of questions at a time, so decisions land in `CONTEXT.md` and the ADRs as they're made. When you're not sure which lane you are in, [matt-ask-matt](../../skills/engineering/matt-ask/SKILL.md) routes you.
+`matt-triage` is an **on-ramp**, not a step in the main chain. The main flow runs from an idea you had (grill, spec, tickets, implement, review), and `matt-triage` is the parallel lane for work that arrived instead. It merges at the same place: an issue labelled `ready-for-agent` with a brief on it, which [implement](../../skills/engineering/matt-implement/SKILL.md) picks up exactly as it would a ticket from [matt-to-tickets](../../skills/engineering/matt-to-tickets/SKILL.md). When a request needs sharpening before it can be briefed, `matt-triage` runs [matt-grilling](../../skills/productivity/matt-grilling/SKILL.md) and [matt-domain-modeling](../../skills/engineering/matt-domain-modeling/SKILL.md) together, a round of questions at a time, so decisions land in `CONTEXT.md` and the ADRs as they're made. When you're not sure which lane you are in, [matt-ask-matt](../../skills/engineering/matt-ask/SKILL.md) routes you.

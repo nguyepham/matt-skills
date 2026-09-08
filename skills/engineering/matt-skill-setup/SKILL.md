@@ -24,7 +24,7 @@ Read current repo state.
 - `docs/adr/` & `src/*/docs/adr/`.
 - `docs/agents/`: Prior output exists?
 - `.scratch/`: Local-markdown convention active?
-- `triage` skill installed? => runs Section B.
+- `matt-triage` skill installed? => runs Section B.
 - Monorepo signals (`pnpm-workspace.yaml`, `package.json` workspaces, populated `packages/*`). No signals => single-context.
 
 ### 2. Present findings and ask
@@ -43,8 +43,8 @@ Otherwise offer:
 Record choice in `docs/agents/issue-tracker.md`. Keep "PRs as a request surface" flag off.
 
 **Section B: Triage label vocabulary.**
-`triage` skill missing => skip section.
-`triage` skill installed => ask:
+`matt-triage` skill missing => skip section.
+`matt-triage` skill installed => ask:
 > Keep default triage labels? (recommended: **yes**)
 
 User says yes => write `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`.
@@ -60,7 +60,7 @@ Show draft:
 - `## Agent skills` block for `CLAUDE.md` or `AGENTS.md`.
 - `docs/agents/issue-tracker.md`.
 - `docs/agents/domain.md`.
-- `docs/agents/triage-labels.md` (if `triage` installed).
+- `docs/agents/triage-labels.md` (if `matt-triage` installed).
 Allow user edits before writing.
 
 ### 4. Write
@@ -88,13 +88,13 @@ Update existing `## Agent skills` block in-place. Preserve surrounding user edit
 [1-line summary]. See `docs/agents/domain.md`.
 ```
 
-`triage` missing => omit `### Triage labels` block & file.
+`matt-triage` missing => omit `### Triage labels` block & file.
 
 Write docs files using seed templates:
 - `issue-tracker-github.md`
 - `issue-tracker-gitlab.md`
 - `issue-tracker-local.md`
-- `triage-labels.md` (if `triage` installed)
+- `triage-labels.md` (if `matt-triage` installed)
 - `domain.md`
 
 "Other" issue tracker => write `docs/agents/issue-tracker.md` from user description.

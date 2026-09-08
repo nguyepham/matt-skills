@@ -18,7 +18,7 @@ invoke via `/matt-ask`. zero auto-invocation.
 
 ## prerequisites
 requires target skills pre-installed. covers repo skills only.
-tracker-dependent routes (`matt-triage`, `matt-to-spec`, `matt-to-tickets`, `implement`) require issue tracker config via `matt-skill-setup`.
+tracker-dependent routes (`matt-triage`, `matt-to-spec`, `matt-to-tickets`, `matt-implement`) require issue tracker config via `matt-skill-setup`.
 
 ## flows
 organizes skills into paths:

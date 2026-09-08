@@ -73,4 +73,4 @@ model-invoked reference. runs underneath skills:
 - `matt-triage`: aligns ticket terms
 - `matt-improve-codebase-architecture`: crystallises decisions
 
-closest sibling: `matt-codebase-design`. unsure => `matt-ask-matt`.
+closest sibling: `matt-codebase-design`. unsure => `matt-ask`.

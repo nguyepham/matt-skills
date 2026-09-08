@@ -2,7 +2,7 @@
 
 `matt-tdd` builds features/fixes test-first. loop: failing test => minimal code => next behaviour. enforces standards: good tests, locations, mocks, anti-patterns.
 
-writes zero tests at unconfirmed seams. names public boundaries first + stops for confirmation. testing effort finite => spend on critical paths. `matt-tdd` = reference. you or `implement` run session.
+writes zero tests at unconfirmed seams. names public boundaries first + stops for confirmation. testing effort finite => spend on critical paths. `matt-tdd` = reference. you or `matt-implement` run session.
 
 ## When to reach for it
 
@@ -13,7 +13,7 @@ run `/matt-tdd` or agent auto-triggers for test-first feature/bug. trigger phras
 | defined inputs/outputs (business logic, contract, transform, validation) | `matt-tdd` |
 | unpinned behaviour | `matt-to-spec` (agrees seams first) |
 | interface shape question | `matt-codebase-design` |
-| spec/tickets exist + want full build | `implement` |
+| spec/tickets exist + want full build | `matt-implement` |
 | config, wiring, glue, types, CRUD | N/A (issue #746. zero independent truth => tautological tests. requires human judgement) |
 
 ## Prerequisites
@@ -67,6 +67,6 @@ mocks = external boundaries only (APIs, time, random, db/fs). zero internal mock
 
 engine inside build step:
 
-`matt-grill-with-docs` => `matt-to-spec` => `matt-to-tickets` => `implement` => `matt-code-review`
+`matt-grill-with-docs` => `matt-to-spec` => `matt-to-tickets` => `matt-implement` => `matt-code-review`
 
-`matt-to-spec` agrees seams. `implement` drives `matt-tdd`. `matt-code-review` checks seams + refactors. `matt-codebase-design` provides vocabulary. unsure => `matt-ask-matt`.
+`matt-to-spec` agrees seams. `matt-implement` drives `matt-tdd`. `matt-code-review` checks seams + refactors. `matt-codebase-design` provides vocabulary. unsure => `matt-ask`.

@@ -55,4 +55,4 @@ pass to `matt-to-spec`. small change => pass to `matt-implement`.
 - agent challenges existing glossary terms
 
 ## pipeline
-`matt-grill-with-docs` => `matt-to-spec` => `matt-to-tickets` => `implement` => `matt-code-review`
+`matt-grill-with-docs` => `matt-to-spec` => `matt-to-tickets` => `matt-implement` => `matt-code-review`

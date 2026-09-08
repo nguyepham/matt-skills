@@ -75,7 +75,7 @@ no. reviews `git diff <fixed-point>...HEAD`. commit changes => run review.
 - missing spec => spec block reports "no spec available"
 
 ## pipeline
-`matt-grill-with-docs` => `matt-to-spec` => `matt-to-tickets` => `implement` => `matt-code-review`
+`matt-grill-with-docs` => `matt-to-spec` => `matt-to-tickets` => `matt-implement` => `matt-code-review`
 
 - `matt-implement`: calls review before final commit.
 - `matt-to-spec` & `matt-to-tickets`: supply spec.
