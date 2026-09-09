@@ -73,4 +73,4 @@ More than for most skills. Grilling leans on the [model](https://www.aihero.dev/
 
 That portability is the whole difference from [matt-grill-with-docs](../engineering/matt-grill-with-docs.md), which runs the same interview but reads a codebase to align against and records what it learns as `CONTEXT.md` and ADRs. Both sit on the [matt-grilling](matt-grilling.md) primitive; `matt-grill-me` is the user-invoked front door that carries nothing with it.
 
-If what you grilled does turn out to be software, you can hand the same conversation to [matt-to-spec](../engineering/matt-to-spec.md) and carry on into the build flow (an option, not the point of the skill). When you're unsure which flow fits, [matt-ask-matt](../engineering/matt-ask-matt.md) routes you.
+If what you grilled does turn out to be software, you can hand the same conversation to [matt-to-spec](../engineering/matt-to-spec.md) and carry on into the build flow (an option, not the point of the skill). When you're unsure which flow fits, [matt-ask](../engineering/matt-ask-matt.md) routes you.

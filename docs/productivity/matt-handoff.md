@@ -17,7 +17,7 @@ Four situations are the whole trigger:
 | Sending the work to a colleague | They need something they can read |
 | Forking a side task found mid-phase | You keep working; a second agent takes the fork |
 
-For anything else (same harness, same directory, you are done [matt-grilling](https://www.aihero.dev/ai-coding-dictionary/matt-grilling) and moving to implementation), `/compact` is the move. [matt-ask-matt](../../skills/engineering/matt-ask/SKILL.md) carries the ordered tree over all five options at a phase boundary.
+For anything else (same harness, same directory, you are done [matt-grilling](https://www.aihero.dev/ai-coding-dictionary/matt-grilling) and moving to implementation), `/compact` is the move. [matt-ask](../../skills/engineering/matt-ask/SKILL.md) carries the ordered tree over all five options at a phase boundary.
 
 ## Branching is the use people skip
 
@@ -73,4 +73,4 @@ Both work; they suit different situations. As a skill it ships and updates throu
 
 ## Where it fits
 
-`matt-handoff` is a **reach-for-it-anytime standalone** that lives at the seam between sessions rather than inside a build chain, but a narrow one, and the honest map is that you'll use it less often than the other four options at a phase boundary. Its closest neighbour is [matt-prototype](../../skills/engineering/matt-prototype/SKILL.md), because a matt-prototype lives in its own directory and the round trip out and back is exactly the crossing this skill is for. When you're at a boundary and unsure whether to continue, clear, hand off, delegate or compact, [matt-ask-matt](../../skills/engineering/matt-ask/SKILL.md) carries the tree that orders those five, and routes you over the rest of the set.
+`matt-handoff` is a **reach-for-it-anytime standalone** that lives at the seam between sessions rather than inside a build chain, but a narrow one, and the honest map is that you'll use it less often than the other four options at a phase boundary. Its closest neighbour is [matt-prototype](../../skills/engineering/matt-prototype/SKILL.md), because a matt-prototype lives in its own directory and the round trip out and back is exactly the crossing this skill is for. When you're at a boundary and unsure whether to continue, clear, hand off, delegate or compact, [matt-ask](../../skills/engineering/matt-ask/SKILL.md) carries the tree that orders those five, and routes you over the rest of the set.
